@@ -1,10 +1,18 @@
-import { Button } from '@heroui/react';
+import { useMemo } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import getRoutesData from './router';
 
 function App() {
+  const routes = getRoutesData();
+
+  const router = useMemo(() => {
+    return createBrowserRouter(routes);
+  }, [routes]);
+
   return (
     <div>
-      <h1>MOVLY</h1>
-      <Button>Click me</Button>
+      <RouterProvider router={router} />
     </div>
   );
 }

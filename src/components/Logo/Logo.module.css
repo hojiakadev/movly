@@ -1,0 +1,30 @@
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 10px;
+  color: inherit;
+  filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.7));
+
+  &:hover {
+    color: var(--white-color);
+  }
+}
+
+.logo_title {
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 800;
+  user-select: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white-color);
+  font-family: 'Momo Trust Display', sans-serif;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  margin-top: -5px;
+}
