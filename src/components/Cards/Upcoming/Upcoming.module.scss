@@ -1,0 +1,283 @@
+.card {
+  position: relative;
+  width: 100%;
+  height: 278px;
+  overflow: hidden;
+  border-radius: 17px;
+  background-size: cover;
+  color: var(--color-text);
+  background-repeat: no-repeat;
+  background-image: var(--backdrop);
+  background-position: center center;
+  border: 1px solid var(--color-border);
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(
+      90deg,
+      rgba(5, 5, 5, 0.96) 0%,
+      rgba(5, 5, 5, 0.88) 42%,
+      rgba(5, 5, 5, 0.62) 72%,
+      rgba(5, 5, 5, 0.35) 100%
+    );
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 155px minmax(0, 1fr);
+  gap: 20px;
+  height: 100%;
+  padding: 21px;
+}
+
+/* Poster */
+.posterWrapper {
+  width: 155px;
+  height: 236px;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #111;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Information */
+.info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+.title {
+  margin: 0 0 10px !important;
+  overflow: hidden;
+  color: #fff !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta {
+  margin-bottom: 10px;
+}
+
+.releaseTag,
+.daysTag {
+  height: 38px;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 36px;
+  border-radius: 12px;
+  white-space: nowrap;
+  margin-inline-end: 0 !important;
+}
+
+.releaseTag {
+  color: var(--color-text);
+  backdrop-filter: blur(8px);
+  background: var(--color-primary-hover);
+  border: 1px solid var(--color-primary-hover);
+}
+
+.daysTag {
+  color: var(--color-text);
+  background: var(--color-primary-hover);
+  border: 1px solid var(--color-primary-hover);
+}
+
+/* Description */
+.description {
+  display: -webkit-box;
+  max-width: 100%;
+  margin: 0 0 auto !important;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+}
+
+/* Buttons */
+.actions {
+  margin-top: 12px;
+}
+
+.notifyButton,
+.trailerButton {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.trailerButton {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+  backdrop-filter: blur(8px);
+  &:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 1200px) {
+  .content {
+    grid-template-columns: 135px minmax(0, 1fr);
+    gap: 17px;
+    padding: 18px;
+  }
+
+  .posterWrapper {
+    width: 135px;
+    height: 205px;
+  }
+
+  .title {
+    font-size: 21px !important;
+  }
+
+  .releaseTag,
+  .daysTag {
+    height: 34px;
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 32px;
+  }
+
+  .description {
+    font-size: 13px !important;
+  }
+
+  .notifyButton,
+  .trailerButton {
+    height: 36px;
+    padding: 0 13px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .card {
+    height: auto;
+  }
+
+  .content {
+    grid-template-columns: 110px minmax(0, 1fr);
+    min-height: 210px;
+    padding: 15px;
+  }
+
+  .posterWrapper {
+    width: 110px;
+    height: 168px;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 18px !important;
+  }
+
+  .meta {
+    flex-wrap: wrap;
+  }
+
+  .releaseTag,
+  .daysTag {
+    height: 30px;
+    font-size: 11px;
+    line-height: 28px;
+  }
+
+  .description {
+    font-size: 12px !important;
+    line-clamp: 2;
+  }
+
+  .actions {
+    gap: 7px !important;
+  }
+
+  .notifyButton,
+  .trailerButton {
+    height: 34px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+}
+
+/* Small mobile */
+
+@media (max-width: 480px) {
+  .content {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .posterWrapper {
+    width: 90px;
+    height: 137px;
+  }
+
+  .title {
+    margin-bottom: 6px !important;
+    font-size: 16px !important;
+  }
+
+  .meta {
+    gap: 5px !important;
+  }
+
+  .releaseTag,
+  .daysTag {
+    height: 26px;
+    padding: 0 7px;
+    font-size: 10px;
+    line-height: 24px;
+  }
+
+  .description {
+    margin-bottom: 5px !important;
+    font-size: 11px !important;
+  }
+
+  .actions {
+    margin-top: 5px;
+  }
+
+  .notifyButton,
+  .trailerButton {
+    height: 30px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+}

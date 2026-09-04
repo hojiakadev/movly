@@ -1,0 +1,14 @@
+.section {
+  position: relative;
+  padding: 30px 48px 70px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}

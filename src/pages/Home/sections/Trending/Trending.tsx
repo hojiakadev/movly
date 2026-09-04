@@ -1,7 +1,7 @@
 import { useMovies } from '@/modules/movies/hooks';
-import { formatDate, imageUrl } from '@/common/utils';
 
-import { Card, Col, Row, Typography } from 'antd';
+import { Col, Row, Typography } from 'antd';
+import { MovieCard } from '@/components/Cards/Movie';
 
 const { Title } = Typography;
 
@@ -20,15 +20,7 @@ const Trending = () => {
       <Row className={classes.wrapper}>
         {movies.map(item => (
           <Col key={item.id}>
-            <Card
-              hoverable
-              size="small"
-              variant="borderless"
-              style={{ width: '100%' }}
-              cover={<img draggable={false} alt={item.title} src={imageUrl(item.posterPath)} />}
-            >
-              <Card.Meta title={item.title} description={formatDate(item.releaseDate)} className={classes.meta} />
-            </Card>
+            <MovieCard title={item.title} posterPath={item.posterPath} releaseDate={item.releaseDate} />
           </Col>
         ))}
       </Row>
