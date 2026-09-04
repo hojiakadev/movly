@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  height: max-content;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  user-select: none;
+  letter-spacing: -0.02em;
+  color: var(--active-color);
+  font-family: var(--font-momo);
+}

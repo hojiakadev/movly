@@ -1,0 +1,40 @@
+@mixin dark-theme {
+  // Background
+  --color-bg-layout: #141414;
+  --color-bg-container: #1f1f1f;
+  --color-bg-header: #1f1f1f;
+  --color-bg-footer: #1f1f1f;
+
+  // Text
+  --color-text: #ffffffd9;
+  --color-text-secondary: #ffffffa6;
+  --color-text-light: #ffffff;
+
+  // Border
+  --color-border: #424242;
+  --color-border-secondary: #303030;
+
+  // Primary
+  --color-primary: #1677ff;
+  --color-primary-hover: #4096ff;
+  --color-primary-active: #0958d9;
+
+  // Shadow
+  --color-shadow: rgba(0, 0, 0, 0.4);
+
+  // success
+  --color-success: #52c41a;
+
+  // error
+  --color-error: #ff4d4f;
+
+  // warning
+  --color-warning: #faad14;
+
+  // info
+  --color-info: #1890ff;
+}
+
+[data-theme='dark'] {
+  @include dark-theme;
+}

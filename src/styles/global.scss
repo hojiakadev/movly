@@ -1,0 +1,23 @@
+@import '@fontsource/source-sans-pro';
+@import '@fontsource/momo-trust-display';
+@import './theme.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --font-source-sans-pro: 'Source Sans Pro', sans-serif;
+  --font-momo: 'Momo Trust Display', sans-serif;
+
+  --active-color: #0965dc;
+}
+
+body {
+  color: var(--color-text);
+  font-family: var(--font-source-sans-pro);
+  background-color: var(--color-bg-layout);
+}
