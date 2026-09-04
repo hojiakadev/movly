@@ -1,19 +1,15 @@
-// src/components/Hero/Hero.tsx
+import { useMovies } from '@/modules/movies/hooks';
+
 import { Button, Carousel } from 'antd';
 import { Star, Play } from 'lucide-react';
 
-import { imageUrl } from '@/common/utils/imgUrl';
-
-import * as Types from '@/modules/movies/types';
+import { formatDate, imageUrl } from '@/common/utils';
 
 import classes from './Hero.module.scss';
 
-type IProps = {
-  movies: Types.IEntity.Movie[];
-  onPlay?: (movie: Types.IEntity.Movie) => void;
-};
+const Hero = () => {
+  const { data } = useMovies();
 
-const Hero = ({ movies, onPlay }: IProps) => {
   return (
     <section className={classes.hero}>
       <Carousel
@@ -25,7 +21,7 @@ const Hero = ({ movies, onPlay }: IProps) => {
         className={classes.carousel}
         dots={{ className: classes.dots }}
       >
-        {movies.map(movie => {
+        {data?.map(movie => {
           const hasImage = Boolean(movie.backdropPath);
           const imagePath = hasImage ? imageUrl(movie.backdropPath, 'w1920') : '';
 
@@ -42,7 +38,7 @@ const Hero = ({ movies, onPlay }: IProps) => {
                         <Star size={14} strokeWidth={2.25} fill="currentColor" />
                         {movie.voteAverage.toFixed(1)}
                       </span>
-                      {movie.releaseDate && <span className={classes.year}>{movie.releaseDate}</span>}
+                      {movie.releaseDate && <span className={classes.year}>{formatDate(movie.releaseDate)}</span>}
                     </div>
                   )}
 
@@ -54,7 +50,7 @@ const Hero = ({ movies, onPlay }: IProps) => {
                     size="large"
                     variant="solid"
                     icon={<Play size={16} strokeWidth={2.5} fill="currentColor" />}
-                    onClick={() => onPlay?.(movie)}
+                    onClick={() => console.log('play', movie.title)}
                   >
                     Watch Now
                   </Button>

@@ -1,12 +1,11 @@
-import { useMovies } from '@/modules/movies/hooks';
-
 import Hero from '@/pages/Home/sections/Hero';
+import Trending from '@/pages/Home/sections/Trending';
 
 const Home = () => {
-  const { data } = useMovies();
   return (
     <div>
-      <Hero movies={data || []} onPlay={movie => console.log('play', movie.title)} />
+      <Hero />
+      <Trending />
     </div>
   );
 };
