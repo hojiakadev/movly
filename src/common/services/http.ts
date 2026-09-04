@@ -1,11 +1,23 @@
-import axios from 'axios';
+import axios, { type AxiosRequestConfig } from 'axios';
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
+const http = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: {
+    Accept: 'application/json'
+  }
+} as AxiosRequestConfig);
 
-const pureRequest = axios.create({ baseURL: BASE_URL });
+http.interceptors.request.use(config => {
+  config.params = config.params || {};
+  config.params['api_key'] = import.meta.env.VITE_TMDB_API_KEY;
+  return config;
+});
 
-const request = axios.create({ baseURL: BASE_URL });
+const pureHttp = axios.create({
+  baseURL: import.meta.env.VITE_MOCK_API_URL,
+  headers: {
+    Accept: 'application/json'
+  }
+} as AxiosRequestConfig);
 
-const http = { request, pureRequest };
-
-export default http;
+export default { request: http, pureRequest: pureHttp };

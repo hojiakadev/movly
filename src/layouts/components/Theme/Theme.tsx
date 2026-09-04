@@ -7,7 +7,7 @@ export const Theme: React.FC<{ children: React.ReactNode }> = ({ children }) => 
       theme={{
         algorithm: antdTheme.darkAlgorithm,
         token: {
-          colorPrimary: '#4f46e5'
+          colorPrimary: '#0965dc'
         }
       }}
     >
