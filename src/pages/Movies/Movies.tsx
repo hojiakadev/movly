@@ -1,14 +1,14 @@
 import { useMovies } from '@/modules/movies/hooks';
-import { useNavigate } from '@tanstack/react-router';
+
+import { Filter } from 'lucide-react';
 
 import { Button, Col, Row } from 'antd';
 import { Section } from '@/components/Section';
 import { MovieCard } from '@/components/Cards/Movie';
 
-import classes from './Trending.module.scss';
+import classes from './Movies.module.scss';
 
-const Trending = () => {
-  const navigate = useNavigate();
+const Movies = () => {
   const { data } = useMovies();
   const { data: trendingData } = useMovies({ page: 2 });
 
@@ -18,8 +18,8 @@ const Trending = () => {
     <Section
       title="Now Playing"
       action={
-        <Button type="link" size="large" onClick={() => navigate({ to: '/movies' })}>
-          See all
+        <Button type="primary" size="large" icon={<Filter size={16} />}>
+          Filter
         </Button>
       }
     >
@@ -34,4 +34,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default Movies;

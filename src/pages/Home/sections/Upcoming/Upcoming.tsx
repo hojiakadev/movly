@@ -1,11 +1,8 @@
 import dayjs from 'dayjs';
 import { useUpcoming } from '@/modules/movies/hooks';
 
+import { Section } from '@/components/Section';
 import { UpcomingCard } from '@/components/Cards/Upcoming';
-
-import { Typography } from 'antd';
-
-const { Title } = Typography;
 
 import classes from './Upcoming.module.scss';
 
@@ -13,9 +10,7 @@ const Upcoming = () => {
   const { data } = useUpcoming({ params: { page: 1 } });
 
   return (
-    <section className={classes.section} aria-label="Coming soon">
-      <Title level={2}>Upcoming Movies</Title>
-
+    <Section title="Upcoming Movies">
       <div className={classes.wrapper}>
         {data?.map(movie => (
           <UpcomingCard
@@ -29,7 +24,7 @@ const Upcoming = () => {
           />
         ))}
       </div>
-    </section>
+    </Section>
   );
 };
 
