@@ -1,7 +1,7 @@
 import * as React from 'react';
+import MainLayout from '@/layouts/Main';
 import { Outlet, createRootRoute } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import Main from '@/layouts/Main';
 
 export const Route = createRootRoute({
   component: RootComponent
@@ -10,9 +10,9 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <React.Fragment>
-      <Main>
+      <MainLayout>
         <Outlet />
-      </Main>
+      </MainLayout>
       <TanStackRouterDevtools />
     </React.Fragment>
   );

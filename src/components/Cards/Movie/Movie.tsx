@@ -1,27 +1,22 @@
-import { formatDate, imageUrl } from '@/common/utils';
+import { Link } from '@tanstack/react-router';
 
-import { Card } from 'antd';
+import { formatDate } from '@/common/utils';
+import { PosterCard } from '@/components/Cards/Poster';
 
 import classes from './Movie.module.scss';
 
-type MovieProps = {
+type IProps = {
+  id: number;
   title: string;
-  posterPath: string;
-  releaseDate: string;
+  posterPath?: string;
+  releaseDate?: string;
+  voteAverage?: number;
 };
 
-const MovieCard = ({ title, posterPath, releaseDate }: MovieProps) => {
-  return (
-    <Card
-      hoverable
-      size="small"
-      variant="borderless"
-      style={{ width: '100%' }}
-      cover={<img draggable={false} alt={title} src={imageUrl(posterPath)} />}
-    >
-      <Card.Meta title={title} description={formatDate(releaseDate)} className={classes.meta} />
-    </Card>
-  );
-};
+const MovieCard = ({ id, title, posterPath, releaseDate, voteAverage }: IProps) => (
+  <Link to="/movies/$id" params={{ id: String(id) }} className={classes.link}>
+    <PosterCard title={title} subtitle={formatDate(releaseDate ?? '')} imagePath={posterPath} rating={voteAverage} />
+  </Link>
+);
 
 export default MovieCard;

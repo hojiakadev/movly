@@ -1,0 +1,153 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(6, 8, 15, 0.97) 0%, rgba(6, 8, 15, 0.82) 55%, rgba(6, 8, 15, 0.6) 100%),
+    linear-gradient(to right, rgba(6, 8, 15, 0.9) 0%, rgba(6, 8, 15, 0.4) 100%);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 36px;
+  padding: 48px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 22px;
+    padding: 24px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.poster {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.posterFallback {
+  aspect-ratio: 2 / 3;
+  border-radius: 14px;
+  background: var(--color-border-secondary);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: clamp(24px, 3vw, 38px) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+}
+
+.year {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.tagline {
+  margin: 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.15);
+}
+
+.certification {
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.overview {
+  margin: 0;
+  max-width: 760px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.heading {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px 26px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 14px;
+}
+
+.factLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}

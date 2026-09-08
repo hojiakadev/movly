@@ -12,6 +12,7 @@ interface IProps {
   enabled?: boolean;
 }
 
+/** `/movie/upcoming` — TMDB still returns a few already-released titles, so they are filtered out. */
 const useUpcoming = ({ params, enabled = true }: IProps = {}) => {
   const initialData = {
     results: [],
@@ -32,12 +33,9 @@ const useUpcoming = ({ params, enabled = true }: IProps = {}) => {
   });
 
   const today = dayjs().startOf('day');
-  const upcomingOnly = data.results.filter(m => {
-    if (!m.releaseDate) return true;
-    return dayjs(m.releaseDate).isAfter(today);
-  });
+  const upcomingOnly = data.results.filter(movie => !movie.releaseDate || dayjs(movie.releaseDate).isAfter(today));
 
-  return { data: upcomingOnly, meta: data.meta, ...args };
+  return { data: upcomingOnly, dates: data.dates, meta: data.meta, ...args };
 };
 
 export default useUpcoming;

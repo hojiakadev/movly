@@ -1,0 +1,40 @@
+.person {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 40px 48px;
+
+  @media (max-width: 768px) {
+    padding: 20px 24px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 16px 18px;
+  }
+}
+
+.photo {
+  width: 240px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+  max-width: 760px;
+}
+
+.name {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+.meta {
+  color: var(--color-text-secondary);
+  margin: 0 0 16px;
+}
+
+.bio {
+  line-height: 1.6;
+  white-space: pre-line;
+}

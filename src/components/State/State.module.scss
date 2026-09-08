@@ -1,0 +1,13 @@
+.state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  width: 100%;
+  padding: 24px 0;
+}
+
+.alert {
+  width: 100%;
+  max-width: 640px;
+}

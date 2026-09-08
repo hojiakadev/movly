@@ -1,18 +1,20 @@
-import { useMovies } from '@/modules/movies/hooks';
+import { formatDate } from '@/common/utils';
+import { useList } from '@/modules/movies/hooks';
 import { useNavigate } from '@tanstack/react-router';
 
-import { Button, Col, Row } from 'antd';
+import { Button } from 'antd';
+import { Grid } from '@/components/Grid';
+import { State } from '@/components/State';
 import { Section } from '@/components/Section';
-import { MovieCard } from '@/components/Cards/Movie';
-
-import classes from './Trending.module.scss';
+import { PosterCard } from '@/components/Cards/Poster';
 
 const Trending = () => {
   const navigate = useNavigate();
-  const { data } = useMovies();
-  const { data: trendingData } = useMovies({ page: 2 });
 
-  const movies = [...data, ...trendingData.slice(0, 15)];
+  const { data, isLoading, error, refetch } = useList();
+  const { data: nextPage } = useList({ params: { page: 2 } });
+
+  const movies = [...data, ...nextPage.slice(0, 15)];
 
   return (
     <Section
@@ -23,13 +25,24 @@ const Trending = () => {
         </Button>
       }
     >
-      <Row className={classes.wrapper}>
-        {movies.map(item => (
-          <Col key={item.id}>
-            <MovieCard title={item.title} posterPath={item.posterPath} releaseDate={item.releaseDate} />
-          </Col>
-        ))}
-      </Row>
+      <State
+        error={error}
+        onRetry={refetch}
+        isLoading={isLoading}
+        isEmpty={!movies.length}
+        emptyText="No movies are playing right now"
+      >
+        <Grid>
+          {movies.map(item => (
+            <PosterCard
+              key={item.id}
+              title={item.title}
+              imagePath={item.posterPath}
+              subtitle={formatDate(item.releaseDate)}
+            />
+          ))}
+        </Grid>
+      </State>
     </Section>
   );
 };

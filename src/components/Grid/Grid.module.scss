@@ -1,0 +1,22 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  column-gap: 16px;
+  row-gap: 26px;
+}
+
+.poster {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.wide {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+@media (max-width: 576px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    column-gap: 12px;
+    row-gap: 18px;
+  }
+}
