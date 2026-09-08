@@ -9,9 +9,9 @@ export interface Items {
 const nav: Items[] = [
   { id: 1, title: 'Home', to: '/' },
   // { id: 2, title: 'Genre', to: '/' },
-  // { id: 3, title: 'Country', to: '/' },
   { id: 4, title: 'Movies', to: '/movies' },
-  { id: 5, title: 'TV Shows', to: '/tv' }
+  { id: 5, title: 'TV Shows', to: '/tv' },
+  { id: 3, title: 'Search', to: '/search' }
   // { id: 6, title: 'Profile', to: '/profile' }
 ];
 

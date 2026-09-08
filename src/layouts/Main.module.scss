@@ -17,6 +17,14 @@
   line-height: 64px;
 
   background-color: var(--color-bg-header);
+
+  @media (max-width: 768px) {
+    padding-inline: 24px;
+  }
+
+  @media (max-width: 576px) {
+    padding-inline: 18px;
+  }
 }
 
 .content {

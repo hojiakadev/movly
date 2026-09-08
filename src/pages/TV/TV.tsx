@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Input, Pagination } from 'antd';
+import { Button, Pagination } from 'antd';
 import { SlidersHorizontal } from 'lucide-react';
 import { useNavigate, useSearch } from '@tanstack/react-router';
 
@@ -20,44 +20,19 @@ const TV = () => {
 
   const [isFilterOpen, setFilterOpen] = useState(false);
 
-  const query = search.query?.trim() ?? '';
-
-  const discover = Hooks.useDiscover({
-    params: Mappers.FilterToDiscoverParams(search),
-    enabled: !query
+  const { data, meta, isLoading, error, refetch } = Hooks.useDiscover({
+    params: Mappers.FilterToDiscoverParams(search)
   });
-
-  const searchResults = Hooks.useSearch({
-    params: { query, page: search.page, includeAdult: search.includeAdult },
-    enabled: Boolean(query)
-  });
-
-  const { data, meta, isLoading, error, refetch } = query ? searchResults : discover;
 
   const apply = (values: Partial<Types.IForm.Filter>) => navigate({ search: previous => ({ ...previous, ...values }) });
 
   return (
     <Section
-      title={query ? `Results for “${query}”` : 'Discover TV shows'}
+      title="Discover TV shows"
       action={
-        <div className={classes.toolbar}>
-          <Input.Search
-            allowClear
-            defaultValue={query}
-            className={classes.search}
-            placeholder="Search TV shows"
-            onSearch={value => apply({ query: value || undefined, page: 1 })}
-          />
-
-          <Button
-            size="large"
-            type="primary"
-            icon={<SlidersHorizontal size={16} />}
-            onClick={() => setFilterOpen(true)}
-          >
-            Filter
-          </Button>
-        </div>
+        <Button size="large" type="primary" icon={<SlidersHorizontal size={16} />} onClick={() => setFilterOpen(true)}>
+          Filter
+        </Button>
       }
     >
       <State
@@ -65,7 +40,7 @@ const TV = () => {
         onRetry={refetch}
         isLoading={isLoading}
         isEmpty={!data.length}
-        emptyText={query ? 'No shows match that search' : 'No shows match these filters'}
+        emptyText="No shows match these filters"
       >
         <Grid>
           {data.map((show: Types.IEntity.Show) => (

@@ -1,11 +1,90 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 48px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 56px 18px 32px;
+  }
+}
+
+.heading {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.subheading {
+  margin: 0 0 28px;
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  max-width: 480px;
+}
+
 .search {
-  width: 320px;
+  width: 100%;
+  max-width: 700px;
+
+  :global(.ant-input-affix-wrapper) {
+    border-radius: 12px;
+    padding: 10px 14px;
+  }
+
+  :global(.ant-input) {
+    font-size: 16px;
+  }
+
+  :global(.ant-input-search-button) {
+    border-radius: 0 12px 12px 0;
+  }
+}
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  color: var(--color-text);
+}
+
+.suggestionText {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.suggestionMeta {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-left: auto;
 }
 
 .tabs {
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
 .pagination {
   margin-top: 24px;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: 0 24px;
+}
+
+.emptyText {
+  font-size: 14px;
+  color: var(--color-text-secondary);
 }
